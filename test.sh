@@ -1,7 +1,7 @@
-for file in data/giant/* ; do
+for file in $2/* ; do
 base=$(basename $file);
 name=${base%.tsp};
 echo -e "$base";
-python main.py -t $file;
+python main.py $1 $file;
 echo "";
 done

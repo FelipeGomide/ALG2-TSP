@@ -17,15 +17,15 @@ def main():
     G = problem.get_graph() 
 
     graph_time = time.time()
-    print(f"Criação do grafo:\t {graph_time - start_time:.4f}s")
+    #print(f"Criação do grafo:\t {graph_time - start_time:.4f}s")
 
     match(method):
         case "-t": #Twice-around-the-tree
             result = twice_around_tree(G)
         case "-b": # Branch-and-Bound
-            print("Not implemented!")
+            raise NotImplementedError
         case "-c": # Christofides
-            print("Not implemented!")
+            raise NotImplementedError
 
     end_time = time.time()
 
