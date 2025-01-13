@@ -1,6 +1,7 @@
 import tsplib95 as tsp
 
 from modules.TaT import twice_around_tree
+from modules.Christofides import christofides
 
 import sys
 import time
@@ -25,7 +26,7 @@ def main():
         case "-b": # Branch-and-Bound
             raise NotImplementedError
         case "-c": # Christofides
-            raise NotImplementedError
+            result = christofides(G)
 
     end_time = time.time()
 
