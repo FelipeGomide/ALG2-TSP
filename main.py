@@ -5,6 +5,7 @@ from modules.Christofides import christofides
 
 import sys
 import time
+import tracemalloc
 
 def main():
     method = sys.argv[1]
@@ -20,6 +21,8 @@ def main():
     graph_time = time.time()
     #print(f"Criação do grafo:\t {graph_time - start_time:.4f}s")
 
+    tracemalloc.start()
+
     match(method):
         case "-t": #Twice-around-the-tree
             result = twice_around_tree(G)
@@ -30,7 +33,11 @@ def main():
 
     end_time = time.time()
 
-    print(end_time - graph_time)
-    print(result)
+    peak = tracemalloc.get_traced_memory()[1]
+    tracemalloc.stop()
+    print(peak)
+
+    # print(end_time - graph_time)
+    # print(result)
 
 main()
