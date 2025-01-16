@@ -1,3 +1,4 @@
+# ./run.sh <method:-c,-t> <intances_folder>
 for file in $2/* ; do
 base=$(basename $file);
 name=${base%.tsp};

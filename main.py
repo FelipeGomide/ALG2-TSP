@@ -2,6 +2,7 @@ import tsplib95 as tsp
 
 from modules.TaT import twice_around_tree
 from modules.Christofides import christofides
+from modules.BnB import queue_bnb, rec_bnb
 
 import sys
 import time
@@ -26,8 +27,10 @@ def main():
     match(method):
         case "-t": #Twice-around-the-tree
             result = twice_around_tree(G)
-        case "-b": # Branch-and-Bound
-            raise NotImplementedError
+        case "-qb": # Branch-and-Bound com Fila de Prioridade
+            result = queue_bnb(G)
+        case "-rb": # Branch-and-Bound recursivo
+            result = rec_bnb(G)
         case "-c": # Christofides
             result = christofides(G)
 
