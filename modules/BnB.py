@@ -1,8 +1,6 @@
 import heapq
 import numpy as np
 
-from modules.utils import calculate_cost
-
 def bound(G, path):
     cost = 0
 
@@ -101,6 +99,8 @@ if __name__ == "__main__":
     import networkx as nx
     import sys
 
+    from utils import calculate_cost
+
     import tracemalloc
 
     qtd = int(sys.argv[1])
@@ -112,9 +112,16 @@ if __name__ == "__main__":
     for i in range(qtd+1, 53):
         G.remove_node(i)
     
+    tracemalloc.start()
+
     if method == "queue":
         print(queue_bnb(G))
     else:
         print(rec_bnb(G))
 
-    
+    peak = tracemalloc.get_traced_memory()[1]
+    tracemalloc.stop()
+    print("Memory:", peak/1024)
+
+else:
+    from modules.utils import calculate_cost
